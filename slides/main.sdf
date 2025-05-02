@@ -29,9 +29,9 @@ Sylvain Gougouzian
 ## Que va faire notre application ?
 
 - Gestion de Personnages Joueurs
+- Servir une page web pour que les PJs lancent les dés
 - Avoir les lancers de dés d'un PJ
 - Faire des statistiques
-- Servir une page web pour que les PJs lancent les dés
 
 ## bun ?
 
@@ -48,6 +48,10 @@ powershell -c "irm bun.sh/install.ps1 | iex"
 https://github.com/gouz/workshop-forge
 
 ## Initialisation
+
+```
+bun init
+```
 
 <div class="xterm"></div>
 
@@ -158,6 +162,8 @@ forge user delete: select name + confirm
 forge user list: list of users
 ```
 
+<div class="xterm"></div>
+
 ## C'est à vous !
 
 ```
@@ -168,6 +174,22 @@ forge user list: list of users
 ├───┼────┼──────┼───────┤
 │ 0 │ 1  │ gouz │ test  │
 └───┴────┴──────┴───────┘
+```
+
+## Soluce
+
+```js
+import { Clipse } from "clipse";
+import db from "../../utils/db";
+
+const userListCmd = new Clipse("list", "list users");
+userListCmd.action(() => {
+  const users = db.query("SELECT * FROM users").all();
+  console.table(users);
+  process.exit(0);
+});
+
+export default userListCmd;
 ```
 
 ## Bun : un serveur web ?
@@ -204,21 +226,45 @@ export default (port: number) => {
 
 Le port du serveur doit être définissable par une option, avec par défaut la valeur 3000.
 
+## Soluce
+
+```js
+import { Clipse } from "clipse";
+import server from "../utils/server";
+
+const serveCmd = new Clipse("serve", "launch the server");
+serveCmd
+  .addOptions({
+    port: {
+      short: "p",
+      type: "string",
+      default: "3000",
+      description: "port",
+      optional: false,
+    },
+  })
+  .action((_, opts) => {
+    server(Number(opts.port));
+  });
+
+export default serveCmd;
+```
+
 ## On joue un peu à lancer des dés
 
 ## Bon, la partie de JdR est terminée
 
 On veut voir un peu les statistiques des lancers
 
-```bash
+```
 > bun forge rolls -u gouz
 
-┌────┬───┬───┬───┬───┬───┬───┬───┬────┬────┬────┐
-│    │ 1 │ 3 │ 5 │ 6 │ 8 │ 2 │ 7 │ 10 │ 18 │ 19 │
-├────┼───┼───┼───┼───┼───┼───┼───┼────┼────┼────┤
-│  8 │ 1 │ 1 │ 2 │ 3 │ 2 │   │   │    │    │    │
-│ 20 │   │   │ 2 │ 1 │   │ 1 │ 1 │ 1  │ 1  │ 1  │
-└────┴───┴───┴───┴───┴───┴───┴───┴────┴────┴────┘
+┌────┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┐
+│    │ 0 │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 10 │ 11 │ 12 │ 13 │ 14 │ 15 │ 16 │ 17 │ 18 │ 19 │ 20 │
+├────┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼────┼────┼────┼────┼────┼────┼────┼────┼────┼────┼────┤
+│  8 │ 0 │ 1 │ 0 │ 1 │ 0 │ 2 │ 3 │ 0 │ 2 │   │    │    │    │    │    │    │    │    │    │    │    │
+│ 20 │ 0 │ 0 │ 1 │ 0 │ 0 │ 2 │ 1 │ 1 │ 0 │ 0 │ 1  │ 0  │ 0  │ 0  │ 0  │ 0  │ 0  │ 0  │ 0  │ 1  │ 1  │
+└────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────┴────┴────┴────┴────┴────┴────┴────┴────┴────┴────┘
 ```
 
 ## C'est à vous !

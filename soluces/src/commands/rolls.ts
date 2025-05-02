@@ -19,7 +19,6 @@ rollsCmd
   })
   .action((_, o) => {
     const stats = getStats((o.user as string) ?? "");
-    console.log(stats);
     if (o.render === "table") console.table(stats);
     if (o.render === "asciichart") {
       Object.entries(stats).forEach(([dice, values], _) => {
