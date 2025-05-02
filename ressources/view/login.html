@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="color-scheme" content="light dark" />
+        <title>Forge CLI</title>
+        <meta
+            name="description"
+            content="A simple CLI for managing users and rolls."
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
+        />
+    </head>
+
+    <body>
+        <header>
+            <h1>Login</h1>
+        </header>
+        <main>
+            <form method="post" action="/login" enctype="multipart/form-data">
+                <article>
+                    <header>Connection</header>
+                    <fieldset>
+                        <label>
+                            Token
+                            <input
+                                name="token"
+                                placeholder="Token"
+                                autocomplete="off"
+                            />
+                        </label>
+                    </fieldset>
+
+                    <input type="submit" value="Login" />
+                    <footer><a href="#">Ask for an account</a></footer>
+                </article>
+            </form>
+        </main>
+        <footer>Forge CLI</footer>
+    </body>
+</html>
