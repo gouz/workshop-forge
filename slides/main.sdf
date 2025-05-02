@@ -63,6 +63,18 @@ bun install clipse chalk @inquirer/prompts
 
 <div class="xterm"></div>
 
+## clipse ?
+
+https://www.npmjs.com/package/clipse
+
+## chalk ?
+
+https://www.npmjs.com/package/chalk
+
+## @inquirer/prompts ?
+
+https://www.npmjs.com/package/@inquirer/prompts
+
 ## Modifier package.json
 
 ```
