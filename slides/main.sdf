@@ -326,7 +326,7 @@ bun add cli-progress @types/cli-progress
 bun forge user add simulate
 ```
 
-## Step 3
+## Step 3.1
 
 On crée une commande simulate dont l'action est composée de :
 
@@ -341,7 +341,7 @@ const multibar = new MultiBar(
 );
 ```
 
-## Step 4
+## Step 3.2
 
 ```js
 const dices = [4, 6, 8, 10, 12, 20, 100];
@@ -354,7 +354,7 @@ for await (const i of dices) {
 multibar.stop();
 ```
 
-## Roll for each dice
+## Step 3.3 : Roll for each dice
 
 ```js
 b1.increment();
@@ -377,3 +377,43 @@ bun build ./src/index.ts --outfile forge --compile
 ## Cross-compile
 
 https://bun.sh/docs/bundler/executables#cross-compile-to-other-platforms
+
+<div class="xterm"></div>
+
+## Bunfig.toml
+
+## Bunfig.toml > Telemetry
+
+> Bun records bundle timings (so we can answer with data, "is Bun getting faster?") and feature usage (e.g., "are people actually using macros?").
+
+```
+telemetry = false
+```
+
+## Bunfig.toml > Tests
+
+```
+[test]
+coverage = true
+coverageThreshold = 0.9
+coverageReporter = ["text", "lcov"]
+```
+
+## Tests
+
+```js
+import { describe, it, expect } from "bun:test";
+import { rollDice } from "./roll";
+
+describe("We want to test the 'roll' service", () => {
+  it("should roll a dice", () => {
+    const roll = rollDice(6);
+    expect(roll).toBeGreaterThanOrEqual(1);
+    expect(roll).toBeLessThanOrEqual(6);
+  });
+});
+```
+
+## On essaye ?
+
+<div class="xterm"></div>

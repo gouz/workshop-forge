@@ -27,6 +27,11 @@
     src: url(Source_Sans_3/SourceSans3-VariableFont_wght.ttf);
 }
 
+@font-face {
+    font-family: "Source Sans Italic";
+    src: url(Source_Sans_3/SourceSans3-Italic-VariableFont_wght.ttf);
+}
+
 body {
     font-family: "Source Sans", sans-serif;
 }
@@ -84,4 +89,10 @@ h1 {
 
 pre {
     font-size: 1rem;
+}
+
+blockquote {
+    max-width: 70%;
+    font-family: "Source Sans Italic", sans-serif;
+    color: var(--seal-brown);
 }

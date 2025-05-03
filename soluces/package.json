@@ -25,6 +25,7 @@
   },
   "scripts": {
     "forge": "bun src/index.ts",
-    "make": "bun build ./src/index.ts --outfile forge --compile"
+    "make": "bun build ./src/index.ts --outfile forge --compile",
+    "make-x64": "bun build --compile --target=bun-darwin-x64 ./src/index.ts --outfile forge-x64"
   }
 }
