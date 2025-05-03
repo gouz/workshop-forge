@@ -1,0 +1,5 @@
+{
+  "addStyles": ["plugins/qrcode/qrcode.css"],
+  "addScripts": ["plugins/qrcode/qrcode.lib.js", "plugins/qrcode/qrcode.js"],
+  "files": ["qrcode.css", "qrcode.js", "qrcode.lib.js"]
+}
