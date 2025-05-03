@@ -1,3 +1,4 @@
+#! /usr/bin/env bun
 import { Clipse } from "clipse";
 import packagejson from "../package.json";
 import userCmd from "./commands/user";
