@@ -55,7 +55,7 @@ bun init
 
 <div class="xterm"></div>
 
-## Install Dependencies
+## Installation Dépendances
 
 ```
 bun install clipse chalk @inquirer/prompts
@@ -124,7 +124,6 @@ forge
     console.log(chalk.bold.green(opts.test));
   })
   .ready();
-
 ```
 
 <div class="xterm"></div>
