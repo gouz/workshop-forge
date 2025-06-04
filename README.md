@@ -64,6 +64,7 @@ bun install clipse chalk @inquirer/prompts
 
 ```js
 import { Clipse } from "clipse";
+import chalk from "chalk";
 import packagejson from "../package.json";
 
 const forge = new Clipse("forge", packagejson.description, packagejson.version);
