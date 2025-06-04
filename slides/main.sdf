@@ -418,3 +418,5 @@ describe("We want to test the 'roll' service", () => {
 <div class="xterm"></div>
 
 ## Merci à vous
+
+<div class="sd-qrcode" style="width:200px" data-url="https://www.devquest.fr/sessions/forger-votre-application-cli-en-2h-avec-bun--typescript"></div>
