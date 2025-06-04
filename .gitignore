@@ -136,3 +136,5 @@ dist
 .pnp.*
 
 forge.db
+
+.DS_Store
